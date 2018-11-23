@@ -22,7 +22,7 @@ Nexmo-->Your server: Nexmo sends the verification result
 
 ## Getting Started
 
-The following sample shows you how to start the verification process by sending a verification code to a user. To learn how to validate the code the user supplies and perform other operations, see [verify a user](/verify/guides/verify-a-user).
+The following sample shows you how to start the verification process by sending a verification code to a user. To learn how to validate the code the user supplies and perform other operations, see [verification workflow](/verify/guides/verification-workflow   ).
 
 ```tabbed_examples
 source: '_examples/verify/building-blocks/send-verification-request'

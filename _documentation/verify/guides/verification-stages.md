@@ -4,7 +4,7 @@ description: The stages of the verification process and default timings for each
 navigation_weight: 2
 ---
 
-# Verification stages
+# Verification Stages
 
 The following sequence diagram shows the order of events with the default timings if a user does not respond to the notifications they receive from the Verify API:
 
