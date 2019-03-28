@@ -8,9 +8,12 @@ OPEN_API_PRODUCTS = %w[
   redact
   audit
   voice
-  account/secret-management
+  account
   external-accounts
   verify
+  vonage-business-cloud/account
+  vonage-business-cloud/extension
+  vonage-business-cloud/user
   application.v2
 ].freeze
 

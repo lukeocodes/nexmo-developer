@@ -24,6 +24,8 @@ If you send a message that contains more than the maximum number of characters p
 
 This segmentation information tells the handset the number of message parts that make up the concatenated SMS and the position of each message part within it. When the handset has received all of the message parts, it presents them to the recipient as a single text.
 
+For more information, the Nexmo Knowledgebase has detailed information about [Multipart SMS](https://help.nexmo.com/hc/en-us/articles/204014833-How-is-a-Multipart-SMS-Constructed-).
+
 ## Encoding
 
 There are two main types of encoding that the Nexmo SMS API supports: `text` and `unicode`.
@@ -67,7 +69,7 @@ When you set the `type` parameter to `unicode`, **all** characters within the me
 
 ## Maximum number of characters
 
-The maximum length of a single SMS message is 140 bytes, which equates to 160 standard GSM 7-bit characters or 80 UCS-2 16-bit characters. A message longer than that is split into parts.
+The maximum length of a single SMS message is 140 bytes, which equates to 160 standard GSM 7-bit characters or 70 UCS-2 16-bit characters. A message longer than that is split into parts.
 
 > **Note**: Characters from the GSM extended table require two bytes per character to encode.
 
@@ -76,9 +78,9 @@ If you are sending a message with a `type` value of `text` then the following ch
 | Parts | Maximum Characters | Calculation |
 | -- | -- | -- |
 | 1 | 160 | Without UDH 160 characters are available |
-| 2 | 304 | `(160 - 8) * 2 = 304` |
-| 3 | 456 | `(160 - 8) * 3 = 456` |
-| 4 | 608 | `(160 - 8) * 4 = 608` |
+| 2 | 304 | `(160 - 7) * 2 = 306` |
+| 3 | 456 | `(160 - 7) * 3 = 459` |
+| 4 | 608 | `(160 - 7) * 4 = 612` |
 
 If you are sending a message with a `type` of `unicode` then each character in the message requires two bytes.
 

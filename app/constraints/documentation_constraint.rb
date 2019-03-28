@@ -25,6 +25,7 @@ class DocumentationConstraint
       'conversation',
       'messages',
       'dispatch',
+      'vonage-business-cloud',
     ]
   end
 
@@ -39,7 +40,6 @@ class DocumentationConstraint
       'voice/voice-api',
       'messaging/sms',
       'messaging/conversion-api',
-      'messaging/sns',
       'messaging/us-short-codes',
       'verify',
       'number-insight',
@@ -52,6 +52,10 @@ class DocumentationConstraint
       'conversation',
       'messages',
       'dispatch',
+      'vonage-business-cloud/number-programmability',
+      'vonage-business-cloud/vbc-apis/account-api',
+      'vonage-business-cloud/vbc-apis/extension-api',
+      'vonage-business-cloud/vbc-apis/user-api',
     ]
   end
 

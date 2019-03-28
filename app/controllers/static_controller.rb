@@ -179,18 +179,18 @@ class StaticController < ApplicationController
         },
       ]
     else
-      return render 'static/404', status: :not_found, formats: [:html]
+      return render_not_found
     end
 
     @building_blocks = @blocks.map do |block|
       block['nexmo'] = "<h2>Nexmo</h2>
-        ```building_blocks
+        ```code_snippets
           code_only: true
           source: #{block['nexmo']}
         ```"
 
       block['tropo'] = "<h2>Tropo</h2>
-        ```building_blocks
+        ```code_snippets
           code_only: true
           source: #{block['tropo']}
         ```"

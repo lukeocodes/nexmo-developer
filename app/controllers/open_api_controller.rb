@@ -58,7 +58,7 @@ class OpenApiController < ApplicationController
     # For now we only use the first tag in the list as an equivalent for the old x-group functionality
     @groups = @definition.endpoints.group_by do |endpoint|
       next nil unless tags
-      endpoint.raw['tags'].first
+      endpoint.raw['tags']&.first
     end
 
     # We want to use the order in which the tags are defined in the definition, so iterate over the tags
@@ -70,7 +70,7 @@ class OpenApiController < ApplicationController
 
     # Sort by the order in which they're defined in the definition
     @groups = @groups.sort_by do |name, _|
-      return 999 if name.nil?
+      next -1 if name.nil?
       ordering[name.capitalize] || 999
     end
   end
@@ -131,6 +131,18 @@ module OasParser
       fragment = pointer.resolve(@content)
 
       expand_refs(fragment)
+    end
+  end
+
+  class Endpoint
+    def oauth?
+      return false unless security
+
+      security_schemes.each do |security_schema|
+        return true if security_schema['bearerFormat'] == 'OAuth'
+      end
+
+      false
     end
   end
 end

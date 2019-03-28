@@ -56,9 +56,8 @@ en:
     quickstarts: Quickstarts
     tutorials: Tutorials
     conversion-api: Conversion API
-    sns: SNS
     concepts: Concepts
-    building-blocks: Building Blocks
+    code-snippets: Code Snippets
     verify: Verify
     configure: Configure
     contribute: Contribute
@@ -73,4 +72,13 @@ en:
     numbers: Numbers
     secret-management: Secret Management
     external-accounts: External Accounts API
+    vonage-business-cloud: Vonage Business Cloud
+    number-programmability: Number Programmability
+    vbc-apis: VBC APIs
+    account-api: Account API
+    extension-api: Extension API
+    user-api: User API
+    getting-started: Getting Started
+
     administration: Administration
+    tasks: Tasks

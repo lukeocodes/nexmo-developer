@@ -5,6 +5,23 @@ NAVIGATION_OVERRIDES = NAVIGATION['navigation_overrides']
 FLATTEN_TREES = [].freeze
 COLLAPSIBLE = ['Messages API', 'Dispatch API', 'Messaging', 'SMS', 'Conversion API', 'SNS', 'US Short Codes', 'Voice', 'Number Insight', 'Account', 'Global', 'SIP', 'Voice API'].freeze
 
+# What tasks do we have available?
+TASKS = {} # rubocop:disable Style/MutableConstant
+TASK_TITLES = {} # rubocop:disable Style/MutableConstant
+Dir.glob("#{Rails.root}/config/tasks/*.yml") do |filename|
+  t = YAML.load_file(filename)
+  TASKS[t['product']] = [] unless TASKS[t['product']]
+  p = filename.gsub('.yml', '').gsub("#{Rails.root}/config/tasks/", "/#{t['product']}/task/")
+  TASKS[t['product']].push({
+    path: p,
+    title: t['title'],
+    is_file?: true,
+    is_task?: true,
+  })
+
+  TASK_TITLES[p] = t['title']
+end
+
 module ApplicationHelper
   def search_enabled?
     defined?(ALGOLIA_CONFIG) && ENV['ALGOLIA_SEARCH_KEY']
@@ -28,6 +45,7 @@ module ApplicationHelper
   def directory_hash(path, name = nil)
     data = { title: (name || path), path: path }
     data[:children] = []
+    # Find all markdown files on disk that are children
     Dir.foreach(path) do |entry|
       next if entry.start_with?('.')
       next if IGNORED_PATHS.include? entry
@@ -36,6 +54,14 @@ module ApplicationHelper
         data[:children] << directory_hash(full_path, entry)
       else
         data[:children] << { title: entry, path: full_path, is_file?: true }
+      end
+    end
+
+    # Do we have tasks for this product?
+    product = path.gsub(%r{.*#{@namespace_root}/}, '')
+    if DocumentationConstraint.product_with_parent_list.include? product
+      if TASKS[product]
+        data[:children] << { title: 'tasks', path: ".#{product}/tasks", children: TASKS[product] }
       end
     end
 
@@ -50,7 +76,7 @@ module ApplicationHelper
 
       sort_array = []
       sort_array << (options['navigation_weight'] || 1000) # If we have a path specific navigation weight, use that to explicitly order this
-      sort_array << (item[:is_file?] ? 0 : 1) if context[:path].include? 'building-blocks' # Directories *always* go after single files for building blocks (priority 1 rather than 0). This even overrides config entries
+      sort_array << (item[:is_file?] ? 0 : 1) if context[:path].include? 'code-snippets' # Directories *always* go after single files for Code Snippets (priority 1 rather than 0). This even overrides config entries
       sort_array << (NAVIGATION_WEIGHT[normalised_title(item)] || 1000) # If we have a config entry for this, use it. Otherwise put it at the end
       sort_array << (item[:is_file?] ? 0 : 1) # If it's a file it gets higher priority than a directory
       sort_array << (item[:is_file?] && document_meta(item[:path])['navigation_weight'] ? document_meta(item[:path])['navigation_weight'] : 1000) # Use the config entry if we have it. Otherwise it goes to the end
@@ -83,7 +109,9 @@ module ApplicationHelper
   end
 
   def normalised_title(item)
-    if item[:is_file?]
+    if item[:is_task?]
+      item[:title]
+    elsif item[:is_file?]
       document_meta(item[:path])['navigation'] || document_meta(item[:path])['title']
     else
       I18n.t("menu.#{item[:title]}")
@@ -193,6 +221,9 @@ module ApplicationHelper
   end
 
   def document_meta(path)
+    if path.include? '/task/'
+      return { 'title' => TASK_TITLES[path.gsub('/task/', '')] }
+    end
     YAML.load_file(path)
   end
 
