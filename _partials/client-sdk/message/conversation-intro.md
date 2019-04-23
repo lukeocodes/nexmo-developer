@@ -1,0 +1,1 @@
+In this getting started guide you'll see how to build a simple conversation app with IP messaging using the Nexmo Client SDK for JavaScript.
