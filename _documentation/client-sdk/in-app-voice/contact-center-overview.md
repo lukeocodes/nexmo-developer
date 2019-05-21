@@ -30,36 +30,45 @@ Make sure you have a Nexmo account. If you don't yet [sign up](https://dashboard
 
 Take a note of your *api key* and *api secret*.
 
-## Set Up Your Backend 
+## Set Up Your Backend
 
 ### 1. Choose Your Backend
 
-Choose between 2 options:
+Deploy one of our sample backend application, in your prefered language. They are all on available on GitHub so you can explore the code and deploy it yourself.
 
-- *Option 1:* Deploy one of our sample backend application, in your prefered language. They are all on available on GitHub so you can explore the code and deploy it yourself.
+<div class="Vlt-grid">
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo-community/contact-center-rails">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/rails.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Ruby on Rails</h4>
+                Set up the Ruby on Rails backend.
+            </div>
+        </a>
+	</div>
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo-community/client-sdk-server-express">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/express.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Express.js</h4>
+                Set up the Express backend.
+            </div>
+        </a>
+	</div>
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo/client-sdk-server-kotlin">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/kotlin.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Kotlin</h4>
+                Set up the Kotlin backend.
+            </div>
+        </a>
+	</div>
+</div>
 
-    * *Rails* : [(GitHub)](https://github.com/nexmo-community/contact-center-rails)
+#### -or-
 
-<a href="https://heroku.com/deploy?template=https://github.com/nexmo-community/contact-center-rails" target="_blank">
-    <img src="https://i.imgur.com/yaVAvl9.png">
-</a> 
-
-
-    * Javascript : [(GitHub)](https://github.com/nexmo-community/client-sdk-server-express)
-    
-    <a href="https://heroku.com/deploy?template=https://github.com/nexmo-community/client-sdk-server-express" target="_blank">
-    <img src="https://i.imgur.com/LayAvQP.png">
-</a> 
-
-
-    * Kotlin : [(GitHub)](https://github.com/nexmo/client-sdk-server-kotlin)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nexmo/client-sdk-server-kotlin)
-
-
-
-- *Option 2:* Integrate to your own backend application. Follow along and use the API directly to gain the same functionality.
-
+Integrate to your own backend application. Follow along and use the API directly to gain the same functionality.
 
 ### 2. Create Nexmo Application
 
@@ -134,20 +143,55 @@ You may update your JWT and adjust the user's permissions, the expiration date a
 
 Nexmo Client SDK is currently supported in Javascript, iOS and Android.
 
-To get started you can choose between 2 options:
+### 1. Choose Your Client
 
-- *Option 1:* 
-    - Clone one of the sample apps:
-        - Javascript: [React](https://github.com/nexmo-community/contact-center-react)
-        - iOS: [Swift](https://github.com/nexmo-community/contact-center-swift) or [Objective-C](https://github.com/nexmo-community/contact-center-objective-c)
-        - Android: Kotlin or Java //TODO: add links
-    - Make sure you add your server URL and the mobile key as required
+<div class="Vlt-grid">
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo-community/contact-center-react">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/rails.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>React</h4>
+                Set up the React client.
+            </div>
+        </a>
+	</div>
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo-community/contact-center-swift">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/express.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Swift</h4>
+                Set up the Swift iOS client.
+            </div>
+        </a>
+	</div>
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="https://github.com/nexmo-community/contact-center-objective-c">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/kotlin.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Objective-C</h4>
+                Set up the Objective-C iOS backend.
+            </div>
+        </a>
+	</div>
+	<div class="Vlt-col">
+        <a class="Vlt-card Vlt-card--clickable" target="_blank" href="#tbc">
+            <div class="Vlt-card__image" style="height: 120px; background-image: url('/assets/images/brands/kotlin.png'); background-size: cover; background-position: center"></div>
+            <div class="Vlt-card__content">
+                <h4>Kotlin/Java</h4>
+                Set up the Kotlin/Java Android client.
+            </div>
+        </a>
+	</div>
+</div>
 
-- *Option 2:* Integrate the SDK to your own client side application:
+#### -or-
+
+### 2. Integrate the SDK to your own client
+
+Integrate the SDK to your own client side application:
     1. [Add the SDK to your existing app](/client-sdk/setup/add-sdk-to-your-app)
     2. [Add in-app voice functionality](/client-sdk/in-app-voice/guides/start-and-receive-calls)
     3. Create a simple API client to consume the JWT endpoint shown above.
-
 
 At this point you have a client side application and a backend application to support it.
 
